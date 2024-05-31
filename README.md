@@ -1,4 +1,8 @@
 # how to start
 
+don't forget add path to gem into PATH variables
+
+```bash
 bundle install
-rpsec spec/simple.rb
+rspec spec/simple.rb
+```
