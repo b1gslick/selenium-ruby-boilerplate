@@ -18,6 +18,24 @@ module Utils
     raise "Timeout after #{duration.to_i} seconds."
   end
 
+  def not_visible(timeout)
+    start_time = Time.now
+    last_error = nil
+    until (duration = Time.now - start_time) > timeout
+      begin
+        yield
+        last_error = nil
+        return false
+      rescue Selenium::WebDriver::Error::NoSuchElementError => e
+        last_error = e
+      end
+      sleep 0.1
+    end
+    return true if last_error
+
+    raise "Timeeout after #{duration.to_i} seconds"
+  end
+
   def browser_options
     the_browser_type = browser_type.to_s
     case the_browser_type
