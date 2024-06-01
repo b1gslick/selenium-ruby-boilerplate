@@ -7,6 +7,10 @@ module Utils
         yield
         last_error = nil
         return true
+      rescue ArgumentError => e
+        last_error = e
+      rescue RSpec::Expectations::ExpectationNotMetError => e
+        last_error = e
       rescue StandardError => e
         last_error = e
       end

@@ -4,13 +4,13 @@ require_relative '../utils'
 describe "Google's Search Functionality" do
   include Utils
 
-  before(:all) do
+  before(:each) do
     @driver = Selenium::WebDriver.for(browser_type, browser_options)
     driver.manage.window.resize_to(1280, 720)
     driver.get(site_url)
   end
 
-  after(:all) do
+  after(:each) do
     driver.quit
   end
 
