@@ -36,3 +36,9 @@ set BASE_URL = "www.your.url"
 bundle install
 rspec spec/simple.rb
 ```
+
+junit reporter
+
+```bash
+rspec spec/simple.rb --format progress --format RspecJunitFormatter --out rspec.xml
+```
